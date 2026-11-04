@@ -17,7 +17,7 @@ https://mycalprj.netlify.app/
 - Basic arithmetic: add, subtract, multiply, divide, percentage
 - Backspace and clear functions
 - Full keyboard support (type digits/operators, Enter to calculate, Backspace to delete, Escape to clear)
-- History line showing the last completed calculation
+- History list showing the last 5 completed calculations, persisted in localStorage
 - Error handling for invalid input
 - Simple, responsive layout
 - Memory buttons (MC / MR / M+ / M-) that store, recall and adjust a value against the display
