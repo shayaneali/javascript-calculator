@@ -26,6 +26,29 @@ let display = document.getElementById("display");
         display.innerText = "";
     }
 
+    // Memory: MC clears, MR recalls (replacing the display),
+    // M+ adds the displayed value, M- subtracts it.
+    // Non-numeric displays ("Error", empty) are ignored by M+/M-.
+    let memory = 0;
+
+    function memoryClear() {
+        memory = 0;
+    }
+
+    function memoryRecall() {
+        display.innerText = String(memory);
+    }
+
+    function memoryAdd() {
+        const value = parseFloat(display.innerText);
+        if (!isNaN(value)) memory += value;
+    }
+
+    function memorySubtract() {
+        const value = parseFloat(display.innerText);
+        if (!isNaN(value)) memory -= value;
+    }
+
     // Keyboard support: digits/operators type, Enter calculates,
     // Backspace deletes, Escape clears.
     document.addEventListener("keydown", function (e) {
