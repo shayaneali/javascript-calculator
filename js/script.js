@@ -8,7 +8,9 @@ let display = document.getElementById("display");
         const expr = display.innerText.trim();
         if (!expr) return;
         try {
-            const result = eval(expr);
+            // ^ is an exponent operator: convert it to JS ** before evaluating
+            // (e.g. 2^3 becomes 2**3 = 8). The history line keeps the original ^.
+            const result = eval(expr.replace(/\^/g, '**'));
             display.innerText = result;
             // Keep the last 5 completed calculations, persisted in localStorage.
             addToHistory(expr + " = " + result);
@@ -52,7 +54,7 @@ let display = document.getElementById("display");
     // Keyboard support: digits/operators type, Enter calculates,
     // Backspace deletes, Escape clears.
     document.addEventListener("keydown", function (e) {
-        if (/^[0-9.]$/.test(e.key) || "+-*/%".includes(e.key)) {
+        if (/^[0-9.]$/.test(e.key) || "+-*/%^".includes(e.key)) {
             press(e.key);
         } else if (e.key === "Enter" || e.key === "=") {
             e.preventDefault();
