@@ -20,6 +20,7 @@ https://mycalprj.netlify.app/
 - History line showing the last completed calculation
 - Error handling for invalid input
 - Simple, responsive layout
+- Memory buttons (MC / MR / M+ / M-) that store, recall and adjust a value against the display
 
 ## Run Locally
 Open `index.html` in a browser, or serve with any static server (e.g. VS Code Live Server).
