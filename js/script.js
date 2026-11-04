@@ -10,8 +10,8 @@ let display = document.getElementById("display");
         try {
             const result = eval(expr);
             display.innerText = result;
-            // Show the last completed calculation as a history line.
-            document.getElementById("history").innerText = expr + " = " + result;
+            // Keep the last 5 completed calculations, persisted in localStorage.
+            addToHistory(expr + " = " + result);
         } catch {
             display.innerText = "Error";
         }
@@ -63,3 +63,25 @@ let display = document.getElementById("display");
             clearDisplay();
         }
     });
+    // Last-5 history list, persisted in localStorage and restored on load.
+    const HISTORY_KEY = "calc_history";
+    function renderHistory() {
+        const el = document.getElementById("history");
+        if (!el) return;
+        let items = [];
+        try { items = JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; } catch (e) { items = []; }
+        el.innerHTML = "";
+        items.forEach(text => {
+            const line = document.createElement("div");
+            line.textContent = text;
+            el.appendChild(line);
+        });
+    }
+    function addToHistory(entry) {
+        let items = [];
+        try { items = JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; } catch (e) { items = []; }
+        items = [entry, ...items].slice(0, 5);
+        localStorage.setItem(HISTORY_KEY, JSON.stringify(items));
+        renderHistory();
+    }
+    renderHistory();
