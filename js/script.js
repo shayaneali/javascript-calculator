@@ -20,6 +20,20 @@ let display = document.getElementById("display");
     }
 
     
+    // Square root: replaces the display with the square root of the
+    // current value; Error on negative or invalid input.
+    function sqrtDisplay() {
+        const raw = display.innerText.trim();
+        const value = Number(raw);
+        if (!raw || Number.isNaN(value) || value < 0) {
+            display.innerText = "Error";
+            return;
+        }
+        const result = Math.sqrt(value);
+        display.innerText = String(result);
+        document.getElementById("history").innerText = "√(" + raw + ") = " + result;
+    }
+
     function removeChar() {
         display.innerText = display.innerText.slice(0, -1);
     }
