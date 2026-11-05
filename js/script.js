@@ -4,13 +4,21 @@ let display = document.getElementById("display");
         display.innerText += value;
     }
 
+    // Round results to 10 decimal places so binary floating-point
+    // artefacts (e.g. 0.1 + 0.2 = 0.30000000000000004) display cleanly.
+    function roundResult(value) {
+        return typeof value === 'number' && Number.isFinite(value)
+            ? parseFloat(value.toFixed(10))
+            : value;
+    }
+
     function calculate() {
         const expr = display.innerText.trim();
         if (!expr) return;
         try {
             // ^ is an exponent operator: convert it to JS ** before evaluating
             // (e.g. 2^3 becomes 2**3 = 8). The history line keeps the original ^.
-            const result = eval(expr.replace(/\^/g, '**'));
+            const result = roundResult(eval(expr.replace(/\^/g, '**')));
             display.innerText = result;
             // Keep the last 5 completed calculations, persisted in localStorage.
             addToHistory(expr + " = " + result);
@@ -29,7 +37,7 @@ let display = document.getElementById("display");
             display.innerText = "Error";
             return;
         }
-        const result = Math.sqrt(value);
+        const result = roundResult(Math.sqrt(value));
         display.innerText = String(result);
         document.getElementById("history").innerText = "√(" + raw + ") = " + result;
     }
