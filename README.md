@@ -15,6 +15,7 @@ https://mycalprj.netlify.app/
 
 ## Features
 - Basic arithmetic: add, subtract, multiply, divide, percentage, plus exponent support via the ^ button (e.g. 2^3 = 8)
+- Results are rounded to 10 decimal places, so floating-point artefacts like 0.1 + 0.2 display as 0.3 (the history line shows the same rounded value)
 - Backspace and clear functions
 - Full keyboard support (type digits/operators, Enter to calculate, Backspace to delete, Escape to clear)
 - History list showing the last 5 completed calculations, persisted in localStorage
