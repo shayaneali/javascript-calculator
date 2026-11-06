@@ -23,6 +23,7 @@ https://mycalprj.netlify.app/
 - Simple, responsive layout
 - Memory buttons (MC / MR / M+ / M-) that store, recall and adjust a value against the display
 - Square root button (√) that replaces the display with the square root of the current value (Error on negative or invalid input)
+- Copy result button (COPY) under the display: copies the current display value to the clipboard, with brief "Copied" feedback
 
 ## Run Locally
 Open `index.html` in a browser, or serve with any static server (e.g. VS Code Live Server).
