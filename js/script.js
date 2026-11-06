@@ -50,6 +50,38 @@ let display = document.getElementById("display");
         display.innerText = "";
     }
 
+    // Copy the current display value to the clipboard, with brief
+    // "Copied" feedback on the button. Empty display or "Error" is ignored.
+    // Falls back to a hidden textarea when the Clipboard API is unavailable.
+    function copyResult() {
+        const value = display.innerText.trim();
+        if (!value || value === "Error") return;
+        const btn = document.getElementById("copyBtn");
+        const showCopied = () => {
+            if (!btn) return;
+            const original = btn.innerText;
+            btn.innerText = "✓ COPIED";
+            setTimeout(() => { btn.innerText = original; }, 1500);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(value).then(showCopied).catch(() => fallbackCopyText(value, showCopied));
+        } else {
+            fallbackCopyText(value, showCopied);
+        }
+    }
+
+    function fallbackCopyText(text, done) {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+        if (done) done();
+    }
+
     // Memory: MC clears, MR recalls (replacing the display),
     // M+ adds the displayed value, M- subtracts it.
     // Non-numeric displays ("Error", empty) are ignored by M+/M-.
