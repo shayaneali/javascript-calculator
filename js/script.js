@@ -42,6 +42,18 @@ let display = document.getElementById("display");
         document.getElementById("history").innerText = "√(" + raw + ") = " + result;
     }
 
+    // Percentage: converts the current entry/result to its percentage
+    // (divides by 100) and shows the conversion in the history line.
+    // Non-numeric displays ("Error", expressions) are ignored.
+    function percentDisplay() {
+        const raw = display.innerText.trim();
+        const value = Number(raw);
+        if (!raw || Number.isNaN(value)) return;
+        const result = roundResult(value / 100);
+        display.innerText = String(result);
+        document.getElementById("history").innerText = raw + "% = " + result;
+    }
+
     function removeChar() {
         display.innerText = display.innerText.slice(0, -1);
     }
@@ -108,8 +120,10 @@ let display = document.getElementById("display");
     // Keyboard support: digits/operators type, Enter calculates,
     // Backspace deletes, Escape clears.
     document.addEventListener("keydown", function (e) {
-        if (/^[0-9.]$/.test(e.key) || "+-*/%^".includes(e.key)) {
+        if (/^[0-9.]$/.test(e.key) || "+-*/^".includes(e.key)) {
             press(e.key);
+        } else if (e.key === "%") {
+            percentDisplay();
         } else if (e.key === "Enter" || e.key === "=") {
             e.preventDefault();
             calculate();
