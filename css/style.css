@@ -54,6 +54,23 @@
     text-overflow: ellipsis;
 }
 
+/* Copy result button row */
+.copy-row {
+    width: 240px;
+    margin: 0 auto 10px auto;
+    text-align: right;
+    background-color: #1f2323;
+}
+
+.copy-btn {
+    width: auto;
+    height: 28px;
+    padding: 0 14px;
+    border-radius: 14px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
 /* buttons layout */
 .btns {
     display: grid;
