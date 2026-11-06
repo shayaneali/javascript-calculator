@@ -14,7 +14,8 @@ https://mycalprj.netlify.app/
 - JavaScript (ES6+)
 
 ## Features
-- Basic arithmetic: add, subtract, multiply, divide, percentage, plus exponent support via the ^ button (e.g. 2^3 = 8)
+- Basic arithmetic: add, subtract, multiply, divide, plus exponent support via the ^ button (e.g. 2^3 = 8)
+- Percentage button (%) that converts the current entry or result to its percentage (divides by 100), with the conversion shown in the history line
 - Results are rounded to 10 decimal places, so floating-point artefacts like 0.1 + 0.2 display as 0.3 (the history line shows the same rounded value)
 - Backspace and clear functions
 - Full keyboard support (type digits/operators, Enter to calculate, Backspace to delete, Escape to clear)
