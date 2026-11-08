@@ -54,6 +54,36 @@
     text-overflow: ellipsis;
 }
 
+/* Theme toggle button row */
+.theme-row {
+    width: 240px;
+    margin: 0 auto 10px auto;
+    text-align: right;
+    background-color: #1f2323;
+}
+
+.theme-btn {
+    width: auto;
+    height: 28px;
+    padding: 0 14px;
+    border-radius: 14px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* Light theme (body.light): page, container, display and buttons go light */
+body.light { background-color: #eef1e8; }
+body.light * { background-color: #eef1e8; }
+body.light .contain { background-color: #ffffff; box-shadow: 0 0 20px rgba(0,0,0,0.15); }
+body.light .theme-row { background-color: #ffffff; }
+body.light .in-cont { background-color: #f0f0f0; color: #111111; border-color: #999999; }
+body.light .history { background-color: #ffffff; color: #555555; }
+body.light .copy-row { background-color: #ffffff; }
+body.light button { background: radial-gradient(circle, #ffffff 30%, #d9d9d9 90%); color: #111111; }
+body.light button:hover { background: radial-gradient(circle, #f0f0f0 25%, #c4c4c4 90%); }
+body.light button.triangle { background: linear-gradient(145deg, #d9d9d9, #bdbdbd); }
+body.light button.clear-btn { background: linear-gradient(145deg, #9db38a, #7a8f66); color: #ffffff; }
+
 /* Copy result button row */
 .copy-row {
     width: 240px;
