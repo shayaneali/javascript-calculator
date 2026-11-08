@@ -133,6 +133,26 @@ let display = document.getElementById("display");
             clearDisplay();
         }
     });
+    // Light and dark theme toggle: dark-green is the default, the choice
+    // is saved in localStorage and restored on load.
+    const THEME_KEY = "calc_theme";
+    function applyTheme(theme) {
+        const light = theme === "light";
+        document.body.classList.toggle("light", light);
+        const btn = document.getElementById("themeBtn");
+        if (btn) btn.textContent = light ? "🌙 Dark" : "☀️ Light";
+    }
+    function toggleTheme() {
+        const next = document.body.classList.contains("light") ? "dark" : "light";
+        try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+        applyTheme(next);
+    }
+    (function loadTheme() {
+        let saved = "dark";
+        try { saved = localStorage.getItem(THEME_KEY) === "light" ? "light" : "dark"; } catch (e) {}
+        applyTheme(saved);
+    })();
+
     // Last-5 history list, persisted in localStorage and restored on load.
     const HISTORY_KEY = "calc_history";
     function renderHistory() {
