@@ -184,3 +184,25 @@ let display = document.getElementById("display");
         renderHistory();
     }
     renderHistory();
+
+    // Show/hide toggle for the last-5 history panel; the choice is
+    // saved in localStorage and restored on load (shown by default).
+    const HISTORY_VISIBLE_KEY = "calc_history_visible";
+    function applyHistoryVisibility(visible) {
+        const el = document.getElementById("history");
+        if (el) el.style.display = visible ? "" : "none";
+        const btn = document.getElementById("historyBtn");
+        if (btn) btn.textContent = visible ? "Hide history" : "Show history";
+    }
+    function toggleHistory() {
+        let visible = true;
+        try { visible = localStorage.getItem(HISTORY_VISIBLE_KEY) !== "hidden"; } catch (e) {}
+        visible = !visible;
+        try { localStorage.setItem(HISTORY_VISIBLE_KEY, visible ? "shown" : "hidden"); } catch (e) {}
+        applyHistoryVisibility(visible);
+    }
+    (function loadHistoryVisibility() {
+        let visible = true;
+        try { visible = localStorage.getItem(HISTORY_VISIBLE_KEY) !== "hidden"; } catch (e) {}
+        applyHistoryVisibility(visible);
+    })();
