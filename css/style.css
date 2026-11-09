@@ -54,6 +54,23 @@
     text-overflow: ellipsis;
 }
 
+/* Show/hide toggle row for the history panel */
+.history-row {
+    width: 240px;
+    margin: 0 auto 10px auto;
+    text-align: right;
+    background-color: #1f2323;
+}
+
+.history-btn {
+    width: auto;
+    height: 28px;
+    padding: 0 14px;
+    border-radius: 14px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
 /* Theme toggle button row */
 .theme-row {
     width: 240px;
@@ -76,6 +93,7 @@ body.light { background-color: #eef1e8; }
 body.light * { background-color: #eef1e8; }
 body.light .contain { background-color: #ffffff; box-shadow: 0 0 20px rgba(0,0,0,0.15); }
 body.light .theme-row { background-color: #ffffff; }
+body.light .history-row { background-color: #ffffff; }
 body.light .in-cont { background-color: #f0f0f0; color: #111111; border-color: #999999; }
 body.light .history { background-color: #ffffff; color: #555555; }
 body.light .copy-row { background-color: #ffffff; }
