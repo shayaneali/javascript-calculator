@@ -54,6 +54,15 @@ let display = document.getElementById("display");
         document.getElementById("history").innerText = raw + "% = " + result;
     }
 
+    // Plus/minus toggle: flips the sign of the current entry or result.
+    // Non-numeric displays ("Error", expressions) are ignored.
+    function toggleSign() {
+        const raw = display.innerText.trim();
+        const value = Number(raw);
+        if (!raw || Number.isNaN(value)) return;
+        display.innerText = String(roundResult(-value));
+    }
+
     function removeChar() {
         display.innerText = display.innerText.slice(0, -1);
     }
