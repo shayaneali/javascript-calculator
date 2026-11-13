@@ -26,6 +26,7 @@ https://mycalprj.netlify.app/
 - Simple, responsive layout
 - Memory buttons (MC / MR / M+ / M-) that store, recall and adjust a value against the display
 - Square root button (√) that replaces the display with the square root of the current value (Error on negative or invalid input)
+- Square button (x²) that replaces the display with the square of the current value (Error on invalid input), with the squaring shown in the history line
 - Copy result button (COPY) under the display: copies the current display value to the clipboard, with brief "Copied" feedback
 - Light and dark theme toggle (dark-green by default; switch to a light theme, choice saved in localStorage)
 
