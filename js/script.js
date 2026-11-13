@@ -42,6 +42,21 @@ let display = document.getElementById("display");
         document.getElementById("history").innerText = "√(" + raw + ") = " + result;
     }
 
+    // Square: replaces the display with the square of the
+    // current value; Error on invalid input. The history line
+    // shows the squaring, e.g. 5² = 25.
+    function squareDisplay() {
+        const raw = display.innerText.trim();
+        const value = Number(raw);
+        if (!raw || Number.isNaN(value)) {
+            display.innerText = "Error";
+            return;
+        }
+        const result = roundResult(value * value);
+        display.innerText = String(result);
+        document.getElementById("history").innerText = raw + "² = " + result;
+    }
+
     // Percentage: converts the current entry/result to its percentage
     // (divides by 100) and shows the conversion in the history line.
     // Non-numeric displays ("Error", expressions) are ignored.
