@@ -57,6 +57,21 @@ let display = document.getElementById("display");
         document.getElementById("history").innerText = raw + "² = " + result;
     }
 
+    // Reciprocal: replaces the display with the reciprocal of the
+    // current value; Error on zero or invalid input. The history line
+    // shows the reciprocal, e.g. 1/4 = 0.25.
+    function reciprocalDisplay() {
+        const raw = display.innerText.trim();
+        const value = Number(raw);
+        if (!raw || Number.isNaN(value) || value === 0) {
+            display.innerText = "Error";
+            return;
+        }
+        const result = roundResult(1 / value);
+        display.innerText = String(result);
+        document.getElementById("history").innerText = "1/" + raw + " = " + result;
+    }
+
     // Percentage: converts the current entry/result to its percentage
     // (divides by 100) and shows the conversion in the history line.
     // Non-numeric displays ("Error", expressions) are ignored.
