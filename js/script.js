@@ -93,8 +93,17 @@ let display = document.getElementById("display");
         display.innerText = String(roundResult(-value));
     }
 
+    // Backspace (⌫ button and keyboard Backspace): deletes the last
+    // character of the current entry. An "Error" display is cleared
+    // outright instead of being sliced to "Erro"; a calculated result
+    // is treated as an editable entry, so deleting from it just edits it.
     function removeChar() {
-        display.innerText = display.innerText.slice(0, -1);
+        const current = display.innerText;
+        if (!current || current === "Error") {
+            display.innerText = "";
+            return;
+        }
+        display.innerText = current.slice(0, -1);
     }
 
     function clearDisplay() {
