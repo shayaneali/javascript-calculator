@@ -18,7 +18,7 @@ https://mycalprj.netlify.app/
 - Percentage button (%) that converts the current entry or result to its percentage (divides by 100), with the conversion shown in the history line
 - Plus/minus button (+/-) that flips the sign of the current entry or result
 - Results are rounded to 10 decimal places, so floating-point artefacts like 0.1 + 0.2 display as 0.3 (the history line shows the same rounded value)
-- Backspace and clear functions
+- Backspace button (⌫) that deletes the last character of the current entry (an "Error" display is cleared instead), plus a clear button (CLEAR)
 - Full keyboard support (type digits/operators, Enter to calculate, Backspace to delete, Escape to clear)
 - History list showing the last 5 completed calculations, persisted in localStorage
 - Show/hide toggle for the history panel (choice saved in localStorage and restored on load)
