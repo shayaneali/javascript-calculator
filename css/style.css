@@ -99,7 +99,6 @@ body.light .history { background-color: #ffffff; color: #555555; }
 body.light .copy-row { background-color: #ffffff; }
 body.light button { background: radial-gradient(circle, #ffffff 30%, #d9d9d9 90%); color: #111111; }
 body.light button:hover { background: radial-gradient(circle, #f0f0f0 25%, #c4c4c4 90%); }
-body.light button.triangle { background: linear-gradient(145deg, #d9d9d9, #bdbdbd); }
 body.light button.clear-btn { background: linear-gradient(145deg, #9db38a, #7a8f66); color: #ffffff; }
 
 /* Copy result button row */
@@ -150,16 +149,9 @@ button:hover{
     background: radial-gradient(circle, #777 25%, #444 90%);
 }
 
-/* triangle button (remove/backspace) */
-button.triangle {
-    border-radius: 0;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    background: linear-gradient(145deg, #666, #333);
-}
-
-button.triangle:hover {
-    transform: scale(1.1);
-    background: linear-gradient(145deg, #777, #444);
+/* Backspace (⌫) button: round like the other keys, slightly larger glyph */
+button.backspace-btn {
+    font-size: 24px;
 }
 
 /* CLEAR button long shape */
