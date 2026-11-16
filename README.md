@@ -21,6 +21,7 @@ https://mycalprj.netlify.app/
 - Backspace button (⌫) that deletes the last character of the current entry (an "Error" display is cleared instead), plus a clear button (CLEAR)
 - Full keyboard support (type digits/operators, Enter to calculate, Backspace to delete, Escape to clear)
 - History list showing the last 5 completed calculations, persisted in localStorage
+- Copy history button next to the history toggle: copies all entries in the last-5 history panel as text (one per line) to the clipboard, with brief "Copied" feedback
 - Show/hide toggle for the history panel (choice saved in localStorage and restored on load)
 - Error handling for invalid input
 - Simple, responsive layout
