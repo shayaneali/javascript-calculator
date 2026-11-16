@@ -203,11 +203,15 @@ let display = document.getElementById("display");
 
     // Last-5 history list, persisted in localStorage and restored on load.
     const HISTORY_KEY = "calc_history";
+    function getHistoryItems() {
+        let items = [];
+        try { items = JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; } catch (e) { items = []; }
+        return items;
+    }
     function renderHistory() {
         const el = document.getElementById("history");
         if (!el) return;
-        let items = [];
-        try { items = JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; } catch (e) { items = []; }
+        const items = getHistoryItems();
         el.innerHTML = "";
         items.forEach(text => {
             const line = document.createElement("div");
@@ -216,13 +220,33 @@ let display = document.getElementById("display");
         });
     }
     function addToHistory(entry) {
-        let items = [];
-        try { items = JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; } catch (e) { items = []; }
-        items = [entry, ...items].slice(0, 5);
+        const items = [entry, ...getHistoryItems()].slice(0, 5);
         localStorage.setItem(HISTORY_KEY, JSON.stringify(items));
         renderHistory();
     }
     renderHistory();
+
+    // Copy history: copies all entries in the last-5 history panel as
+    // text (one per line) to the clipboard, with brief "Copied" feedback
+    // on the button. Empty history is ignored. Falls back to a hidden
+    // textarea when the Clipboard API is unavailable.
+    function copyHistory() {
+        const items = getHistoryItems();
+        if (items.length === 0) return;
+        const text = items.join("\n");
+        const btn = document.getElementById("copyHistoryBtn");
+        const showCopied = () => {
+            if (!btn) return;
+            const original = btn.innerText;
+            btn.innerText = "✓ Copied";
+            setTimeout(() => { btn.innerText = original; }, 1500);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(showCopied).catch(() => fallbackCopyText(text, showCopied));
+        } else {
+            fallbackCopyText(text, showCopied);
+        }
+    }
 
     // Show/hide toggle for the last-5 history panel; the choice is
     // saved in localStorage and restored on load (shown by default).
