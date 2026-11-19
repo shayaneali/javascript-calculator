@@ -4,6 +4,12 @@ let display = document.getElementById("display");
         display.innerText += value;
     }
 
+    // Pi: appends the value of Math.PI to the current expression,
+    // so it can be used in calculations (e.g. 2 x π = 6.2831853072).
+    function pressPi() {
+        press(String(Math.PI));
+    }
+
     // Round results to 10 decimal places so binary floating-point
     // artefacts (e.g. 0.1 + 0.2 = 0.30000000000000004) display cleanly.
     function roundResult(value) {
