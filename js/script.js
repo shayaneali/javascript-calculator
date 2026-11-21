@@ -63,6 +63,21 @@ let display = document.getElementById("display");
         document.getElementById("history").innerText = raw + "² = " + result;
     }
 
+    // Cube: replaces the display with the cube of the
+    // current value; Error on invalid input. The history line
+    // shows the cubing, e.g. 5³ = 125.
+    function cubeDisplay() {
+        const raw = display.innerText.trim();
+        const value = Number(raw);
+        if (!raw || Number.isNaN(value)) {
+            display.innerText = "Error";
+            return;
+        }
+        const result = roundResult(value * value * value);
+        display.innerText = String(result);
+        document.getElementById("history").innerText = raw + "³ = " + result;
+    }
+
     // Reciprocal: replaces the display with the reciprocal of the
     // current value; Error on zero or invalid input. The history line
     // shows the reciprocal, e.g. 1/4 = 0.25.
