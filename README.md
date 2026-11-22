@@ -3,10 +3,10 @@
 A lightweight web-based calculator built with pure JavaScript, implementing clean UI logic and arithmetic operations.
 
 ## Live Demo
-https://mycalprj.netlify.app/
+https://shayaneali.github.io/javascript-calculator/
 
 ## Screenshot
-![javascript-calculator screenshot](https://image.thum.io/get/width/1200/https://mycalprj.netlify.app/)
+![javascript-calculator screenshot](https://image.thum.io/get/width/1200/https://shayaneali.github.io/javascript-calculator/)
 
 ## Tech Stack
 - HTML5
