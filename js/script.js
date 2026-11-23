@@ -78,6 +78,21 @@ let display = document.getElementById("display");
         document.getElementById("history").innerText = raw + "³ = " + result;
     }
 
+    // 10^x: replaces the display with 10 raised to the power of the
+    // current value; Error on invalid input. The history line
+    // shows the power, e.g. 10^2 = 100.
+    function pow10Display() {
+        const raw = display.innerText.trim();
+        const value = Number(raw);
+        if (!raw || Number.isNaN(value)) {
+            display.innerText = "Error";
+            return;
+        }
+        const result = roundResult(Math.pow(10, value));
+        display.innerText = String(result);
+        document.getElementById("history").innerText = "10^" + raw + " = " + result;
+    }
+
     // Reciprocal: replaces the display with the reciprocal of the
     // current value; Error on zero or invalid input. The history line
     // shows the reciprocal, e.g. 1/4 = 0.25.
