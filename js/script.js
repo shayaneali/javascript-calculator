@@ -284,6 +284,22 @@ let display = document.getElementById("display");
         }
     }
 
+    // Clear history: empties the last-5 history list (localStorage and
+    // the panel) with brief "Cleared" feedback on the button. Empty
+    // history is ignored.
+    function clearHistory() {
+        const items = getHistoryItems();
+        if (items.length === 0) return;
+        try { localStorage.removeItem(HISTORY_KEY); } catch (e) {}
+        renderHistory();
+        const btn = document.getElementById("clearHistoryBtn");
+        if (btn) {
+            const original = btn.innerText;
+            btn.innerText = "✓ Cleared";
+            setTimeout(() => { btn.innerText = original; }, 1500);
+        }
+    }
+
     // Show/hide toggle for the last-5 history panel; the choice is
     // saved in localStorage and restored on load (shown by default).
     const HISTORY_VISIBLE_KEY = "calc_history_visible";
