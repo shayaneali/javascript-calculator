@@ -202,8 +202,19 @@ let display = document.getElementById("display");
     }
 
     // Keyboard support: digits/operators type, Enter calculates,
-    // Backspace deletes, Escape clears.
+    // Backspace deletes, Escape clears. "?" opens the shortcuts help;
+    // while the help modal is open, keys do not type and Escape closes it.
     document.addEventListener("keydown", function (e) {
+        var helpModal = document.getElementById("helpModal");
+        var helpOpen = helpModal && !helpModal.classList.contains("hidden");
+        if (e.key === "?") {
+            openHelp();
+            return;
+        }
+        if (helpOpen) {
+            if (e.key === "Escape") closeHelp();
+            return;
+        }
         if (/^[0-9.]$/.test(e.key) || "+-*/^".includes(e.key)) {
             press(e.key);
         } else if (e.key === "%") {
@@ -216,6 +227,18 @@ let display = document.getElementById("display");
         } else if (e.key === "Escape") {
             clearDisplay();
         }
+    });
+
+    // Keyboard shortcuts help modal: opened by the "? Help" button or the
+    // "?" key, closed by the X button, a click outside the card, or Escape.
+    function openHelp() {
+        document.getElementById("helpModal").classList.remove("hidden");
+    }
+    function closeHelp() {
+        document.getElementById("helpModal").classList.add("hidden");
+    }
+    document.getElementById("helpModal").addEventListener("click", function (e) {
+        if (e.target === this) closeHelp();
     });
     // Light and dark theme toggle: dark-green is the default, the choice
     // is saved in localStorage and restored on load.
