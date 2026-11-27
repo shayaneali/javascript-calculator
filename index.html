@@ -10,7 +10,7 @@
 <body>
 
     <div class="contain">
-        <div class="theme-row"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ Light</button></div>
+        <div class="theme-row"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ Light</button> <button class="theme-btn" id="helpBtn" onclick="openHelp()" aria-label="Keyboard shortcuts help">? Help</button></div>
         <div class="in-cont" id="display"></div>
         <div class="history-row"><button class="history-btn" id="historyBtn" onclick="toggleHistory()">Hide history</button> <button class="history-btn" id="copyHistoryBtn" onclick="copyHistory()">Copy history</button> <button class="history-btn" id="clearHistoryBtn" onclick="clearHistory()">Clear history</button></div>
         <div class="history" id="history" title="Last 5 calculations"></div>
@@ -59,6 +59,24 @@
 
 
 
+        </div>
+    </div>
+
+    <!-- keyboard shortcuts help modal -->
+    <div class="modal-overlay hidden" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+        <div class="modal">
+            <button class="modal-close" onclick="closeHelp()" aria-label="Close help">×</button>
+            <h2 id="helpTitle">Keyboard shortcuts</h2>
+            <table class="shortcuts">
+                <tr><td><kbd>0</kbd>–<kbd>9</kbd>, <kbd>.</kbd></td><td>Type digits and decimal point</td></tr>
+                <tr><td><kbd>+</kbd> <kbd>-</kbd> <kbd>*</kbd> <kbd>/</kbd></td><td>Operators</td></tr>
+                <tr><td><kbd>^</kbd></td><td>Power</td></tr>
+                <tr><td><kbd>%</kbd></td><td>Percent</td></tr>
+                <tr><td><kbd>Enter</kbd> or <kbd>=</kbd></td><td>Calculate</td></tr>
+                <tr><td><kbd>Backspace</kbd></td><td>Delete last character</td></tr>
+                <tr><td><kbd>Esc</kbd></td><td>Clear display</td></tr>
+                <tr><td><kbd>?</kbd></td><td>Open this help</td></tr>
+            </table>
         </div>
     </div>
 
