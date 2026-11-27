@@ -162,5 +162,84 @@ button.clear-btn {
     border-radius: 15px;
     background: linear-gradient(145deg, #707070, #4a4a4a);
     font-size: 18px;
-} 
+}
+
+/* Keyboard shortcuts help modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+.modal-overlay.hidden {
+    display: none;
+}
+.modal {
+    width: 300px;
+    max-width: 90%;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #1f2323;
+    color: #c7c7c7;
+    text-align: left;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    position: relative;
+}
+.modal h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    background-color: #1f2323;
+}
+.shortcuts {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+    background-color: #1f2323;
+}
+.shortcuts td {
+    padding: 5px 4px;
+    vertical-align: top;
+    background-color: #1f2323;
+}
+.shortcuts td:first-child {
+    white-space: nowrap;
+}
+.modal kbd {
+    background-color: #555;
+    color: #ffffff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+}
+button.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    line-height: 1;
+}
+body.light .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+body.light .modal,
+body.light .modal h2,
+body.light .shortcuts,
+body.light .shortcuts td {
+    background-color: #ffffff;
+    color: #111111;
+}
+body.light .modal kbd {
+    background-color: #d9d9d9;
+    color: #111111;
+}
  
